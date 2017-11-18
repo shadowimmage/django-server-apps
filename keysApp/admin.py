@@ -26,7 +26,7 @@ class KeysAdmin(admin.ModelAdmin):
     ]
     list_display = ('key_type', 'number', 'is_returned', 'is_retired', 'date_updated')
     list_filter = ('is_retired',)
-    search_fields = ('key_type', 'number',)
+    search_fields = ('key_type__key_type', 'number',)
 
 admin.site.register(models.Keys, KeysAdmin)
 
