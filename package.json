@@ -5,6 +5,10 @@
     "author": "Chase Sawyer <shadowimmage@gmail.com>",
     "private": true,
     "scripts": {
-        "postinstall": "cd ./rttApp/rttApp-vue/ && yarn build"
+        "postinstall": "cd ./rttApp/rttApp-vue/ && npm run-script build"
+    },
+    "engines": {
+      "node": ">= 4.0.0",
+      "npm": ">= 3.0.0"
     }
 }
