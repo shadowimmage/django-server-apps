@@ -28,7 +28,10 @@ SECRET_KEY = os.environ['SETTING_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-DEBUG = os.environ['SETTING_DEBUG']
+if os.environ['SETTING_DEBUG'] == 'False':
+    DEBUG = False
+else:
+    DEBUG = True
 
 # CORS (for development with live Vue instance - not needed if built Vue App served from Django)
 # CORS_ALLOW_CREDENTIALS = True
@@ -64,6 +67,7 @@ ALLOWED_HOSTS = ['localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'switchboard.apps.SwitchboardConfig',
     'keysApp.apps.KeysappConfig',
     'rttApp.apps.RttappConfig',
     'accounts.apps.AccountsConfig',
@@ -201,7 +205,6 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
@@ -212,6 +215,8 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 GRAPHENE = {
     'SCHEMA': 'djangoServer.schema.schema',
