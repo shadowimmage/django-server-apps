@@ -6,11 +6,12 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import VueApollo from 'vue-apollo'
 import App from './App'
 import router from './router'
+import Cookies from 'js-cookie'
 
 Vue.config.productionTip = false
 
 const networkInterface = createNetworkInterface({
-  uri: 'http://localhost:8000/graphql/',
+  uri: '/graphql/',
   opts: {
     credentials: 'same-origin'
   }
@@ -21,9 +22,10 @@ networkInterface.use([{
     if (!req.options.headers) {
       req.options.headers = {}  // Create the header object if needed.
     }
-    // req.options.headers['Accept'] = 'application/json' <-- not needed
-    // req.options.headers['Content-Type'] = 'application/graphql' <-- BAD
-    req.options.headers['X-CSRFToken'] = localStorage.getItem('csrftoken') ? localStorage.getItem('csrftoken') : null
+    req.options.headers['Accept'] = 'application/json'
+    // req.options.headers['Content-Type'] = 'application/graphql'
+    // req.options.headers['X-CSRFToken'] = localStorage.getItem('csrftoken') ? localStorage.getItem('csrftoken') : null
+    req.options.headers['X-CSRFToken'] = Cookies.get('csrftoken')
     next()
   }
 }])
