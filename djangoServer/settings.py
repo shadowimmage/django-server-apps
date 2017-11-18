@@ -57,11 +57,16 @@ DATABASES = {
 
 # for use on Heroku:
 # https://devcenter.heroku.com/articles/django-app-configuration
+# Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+DATABASES['default']['TEST'] = {'NAME': DATABASES['default']['NAME']}
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['localhost']
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
