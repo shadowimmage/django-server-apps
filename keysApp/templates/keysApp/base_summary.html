@@ -1,0 +1,17 @@
+{% extends 'keysApp/base.html' %}
+
+{% block content %}
+    <div id="session_summary" class="row">
+        <div class="col-lg-12">
+            <blockquote>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-key"></i> {{ session_info.key }}</li>
+                    <li><i class="fa fa-check"></i> {{ session_info.action }}</li>
+                    <li><i class="fa fa-user"></i> {{ session_info.customer }}</li>
+                </ul>
+            </blockquote>
+        </div>
+    </div>
+    {% block form_space %}
+    {% endblock %}
+{% endblock %}

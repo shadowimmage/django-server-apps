@@ -1,0 +1,44 @@
+{% extends 'keysApp/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div id="blurb" class="col-lg-12">
+                    <blockquote>
+                        <p class="text-justify">Access to certain pieces of teaching equipment requires classroom users to check out an equipment key from our office. The standard equipment key for Seattle campus general use classrooms (with the designation IOFA) gives access to secured instructional technology in general use classrooms.</p>
+                    </blockquote>
+                </div>
+                <div id="keyChooser" class="row">
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <h3>Please choose a key type and number to begin</h3>
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                        <form action="{% url 'keysApp:index' %}" method="post" class="form-horizontal">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <div class="form-group">
+                                {{ form.form_keyType.errors }}
+                                <label for="{{ form.form_keyType.id_for_label }}" class="col-lg-2 control-label">{{ form.form_keyType.label }}</label>
+                                <div class="col-lg-8">
+                                    {{ form.form_keyType }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form.form_keyNum.errors }}
+                                <label for="{{ form.form_keyNum.id_for_label }}" class="col-lg-2 control-label">{{ form.form_keyNum.label }}</label>
+                                <div class="col-lg-8">
+                                    {{ form.form_keyNum }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-8">
+                                    <button type="submit" class="btn btn-primary">OK</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

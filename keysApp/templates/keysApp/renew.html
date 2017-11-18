@@ -1,0 +1,40 @@
+{% extends 'keysApp/base_summary.html' %}
+
+{% block form_space %}
+    <div id="dates_entry" class="row">
+        <div class="col-lg-12">
+            <form action="{% url 'keysApp:renew' %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                {% block js %}
+                    {{ block.super }}
+                    <script>
+                        $( function() {
+                            $( "#datepicker" ).datepicker({
+                                showAnim: "slideDown",
+                                showButtonPanel: true,
+                            });
+                        } );
+                    </script>
+                {% endblock %}
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                <div class="form-group">
+                    {{ field.errors }}
+                    <label for="{{ field.id_for_label }}" class="col-lg-2 control-label">{{ field.label }}</label>
+                    <div class="col-lg-8">
+                        {{ field }}
+                        {% if field.help_text %}
+                        <p class="help-block">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-8">
+                        <button type="submit" class="btn btn-primary">Finish</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <!-- local statics -->
+        <title>Sawyer-Apps</title>
+    </head>
+    <body>
+        <div id="page-container" class="center-block">
+            <div class="page-header container-fluid">
+                <div class="row">
+                    <div id="logo" class="col-lg-1 col-md-1 col-sm-1 col-xs-3">
+                    </div>
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-9">
+                        <h1 id="pageTitle" class="text-primary">
+                            Apps Account Management
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="content container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        {% comment %}<div id="footer_box" class="container">
+            <footer class="footer">
+                <p class="text-muted">Write up footer here</p>
+            </footer>
+        </div>{% endcomment %}
+    </body>
+</html>

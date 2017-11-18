@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div class="float-left d-block">
+    <h3>User:</h3>
+    <ul>
+        <li>Username: {{ user }}</li>
+    </ul>    
+</div>
+<div class="float-left d-block">
+    <a href="{% url 'accounts:logout' %}">logout</a>
+</div>
+
+
+{% endblock %}

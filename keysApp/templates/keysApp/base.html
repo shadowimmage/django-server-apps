@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <!-- local statics -->
+        <link rel="stylesheet" href="{% static 'keysApp/css/keysApp.css' %}">
+        <title>Key Loan App</title>
+    </head>
+    <body>
+        <div id="page-container" class="center-block">
+            <div class="page-header container-fluid">
+                <div class="row">
+                    <div id="logo" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <a href="{% url 'keysApp:index' %}">
+                            <img class="img-responsive" src="{% static 'keysApp/img/UW_W-Logo_RGB.png' %}" alt="UW 'W' Icon"/>
+                        </a>
+                    </div>
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                        <h1 id="pageTitle" class="text-primary">
+                            <a href="{% url 'keysApp:index' %}">Key Loans</a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="content container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        {% comment %}<div id="footer_box" class="container">
+            <footer class="footer">
+                <p class="text-muted">Write up footer here</p>
+            </footer>
+        </div>{% endcomment %}
+    </body>
+</html>
+
+
+{% block js %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+    </script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'keysApp/base.html' %}
+
+{% block content %}
+    <div id="session_summary" class="row">
+        <div class="col-lg-12">
+            <h2><i class="fa fa-check"></i> Thank you. Your information has been saved.</h2>
+            <ul class="list-unstyled">
+                <li><i class="fa fa-key"></i> {{ session_info.key }}</li>
+                <li><i class="fa fa-user"></i> {{ session_info.customer }}</li>
+                <li>{{ session_info.confirmation_type }}{{ session_info.confirmation_detail }}</li>
+            </ul>
+        </div>
+    </div>
+    <div id="key_list" class="row">
+        <div class="col-lg-12">
+            <h4>Keys you have checked out</h4>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Due Date</th>
+                        <th>Overdue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for record in session_info.out_keys %}
+                    {% if record.is_overdue %}
+                    <tr class="danger">
+                    {% else %}
+                    <tr>
+                    {% endif %}
+                        <td>{{ record.key }}</td>
+                        <td>{{ record.date_due }}</td>
+                        {% if record.is_overdue %}
+                            <td><span class="glyphicon glyphicon-warning-sign"></span></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a href="{% url 'keysApp:index' %}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-home"></span> Home</a>
+        </div>
+    </div>
+{% endblock %}

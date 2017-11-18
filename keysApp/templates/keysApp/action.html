@@ -1,0 +1,32 @@
+{% extends 'keysApp/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div id="active_key_info" class="col-lg-12">
+            <blockquote>
+                <h4>Selected key: {{ key_info.key }} <small> {{ key_info.status }}</small></h4>
+            </blockquote>
+        </div>
+    </div>
+    <div class="row">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <div class="col-lg-4">
+            <form action="{% url 'keysApp:action' %}" method="post">
+                {% csrf_token %}
+                <button id="checkoutButton" name="action" value={{ actions.0 }} type="submit" class="btn btn-block btn-primary btn-lg {% if key_info.checked_out %}disabled{% endif %}"><span class="glyphicon glyphicon-ok"></span> Checkout</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form action="{% url 'keysApp:action' %}" method="post">
+                {% csrf_token %}
+                <button id="renewButton" name="action" value={{ actions.1 }} type="submit" class="btn btn-block btn-info btn-lg {% if not key_info.checked_out %}disabled{% endif %}"><span class="glyphicon glyphicon-repeat"></span> Renew</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <form action="{% url 'keysApp:action' %}" method="post">
+                {% csrf_token %}
+                <button id="returnButton" name="action" value={{ actions.2 }} type="submit" class="btn btn-block btn-info btn-lg {% if not key_info.checked_out %}disabled{% endif %}"><span class="glyphicon glyphicon-remove"></span> Return</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
