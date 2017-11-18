@@ -13,9 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from graphene_django.views import GraphQLView
+from django.contrib.auth.decorators import login_required
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^', include('switchboard.urls')),
+    url(r'^djangoServer/', RedirectView.as_view(url='/')),
+    url(r'^djangoServer/admin/', admin.site.urls),
+    url(r'^keysApp/', include('keysApp.urls')),
+    url(r'^rttApp/', include('rttApp.urls')),
+    url(r'^graphql/', login_required(ensure_csrf_cookie(GraphQLView.as_view(graphiql=True)))),
+    url(r'^accounts/', include('accounts.urls')),
+    url('', include('social_django.urls', namespace='social')),
 ]
