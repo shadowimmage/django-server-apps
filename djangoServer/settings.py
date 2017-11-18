@@ -41,19 +41,26 @@ else:
 # )
 # CORS_URLS_REGEX = r'^/graphql/.*$'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASS'],
-        'HOST': '',
-        'PORT': '',
+if os.environ['LOCAL'] == 'True':
+    # Database
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASS'],
+            'HOST': '',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['DATABASE_NAME'],
+        }
+    }
 
 # for use on Heroku:
 # https://devcenter.heroku.com/articles/django-app-configuration
