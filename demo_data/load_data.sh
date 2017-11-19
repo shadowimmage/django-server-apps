@@ -5,7 +5,7 @@ clear
 echo "script begin"
 
 echo "delete app tables"
-psql $DATABASE_URL --set ON_ERROR_STOP=on \i ./delete_app_tables.sql
+DELETE_APP_TABLES="psql $DATABASE_URL --set ON_ERROR_STOP=on "
 
 echo "loading database tables:"
 
@@ -14,6 +14,9 @@ LOAD_KEYS="psql $DATABASE_URL --set ON_ERROR_STOP=on "
 echo "loading rtt..."
 LOAD_RTT="psql $DATABASE_URL --set ON_ERROR_STOP=on "
 
+${DELETE_APP_TABLES} <<SQL
+\i ./delete_app_tables.sql
+SQL
 
 ${LOAD_KEYS} <<SQL
 \i ./keys_keytypes.sql
