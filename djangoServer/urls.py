@@ -22,8 +22,8 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^', include('switchboard.urls')),
-    # url(r'^djangoServer/', RedirectView.as_view(url='/')),
     url(r'^djangoServer/admin/', admin.site.urls),
+    url(r'^djangoServer/', RedirectView.as_view(url='/')),
     url(r'^keysApp/', include('keysApp.urls')),
     url(r'^rttApp/', include('rttApp.urls')),
     url(r'^graphql/', login_required(ensure_csrf_cookie(GraphQLView.as_view(graphiql=True)))),
