@@ -22,7 +22,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^', include('switchboard.urls')),
-    url(r'^djangoServer/', RedirectView.as_view(url='/')),
+    # url(r'^djangoServer/', RedirectView.as_view(url='/')),
     url(r'^djangoServer/admin/', admin.site.urls),
     url(r'^keysApp/', include('keysApp.urls')),
     url(r'^rttApp/', include('rttApp.urls')),

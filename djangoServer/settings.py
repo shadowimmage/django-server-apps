@@ -28,10 +28,10 @@ SECRET_KEY = os.environ['SETTING_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-if os.environ['SETTING_DEBUG'] == 'False':
-    DEBUG = False
-else:
+if os.environ['SETTING_DEBUG'] == 'True':
     DEBUG = True
+else:
+    DEBUG = False
 
 # CORS (for development with live Vue instance - not needed if built Vue App served from Django)
 # CORS_ALLOW_CREDENTIALS = True
