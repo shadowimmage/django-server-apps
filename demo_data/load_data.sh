@@ -4,21 +4,15 @@ clear
 
 echo "script begin"
 
-echo "reset database"
-pg:reset --confirm django-server-apps-dev
-
-echo "rerun migations"
-python ../manage.py migrate
-
-echo "create superuser"
-echo "from django.contrib.auth.models import User; import os; User.objects.create_superuser('shadowimmageAdmin', 'shadowimmage@gmail.com', os.environ['SUPERUSER_PASS'])" | python manage.py shell
+echo "delete app tables"
+psql $DATABASE_URL --set ON_ERROR_STOP=on \i ./delete_app_tables.sql
 
 echo "loading database tables:"
 
 echo "loading keys..."
-LOAD_KEYS="psql --set ON_ERROR_STOP=on "
+LOAD_KEYS="psql $DATABASE_URL --set ON_ERROR_STOP=on "
 echo "loading rtt..."
-LOAD_RTT="psql --set ON_ERROR_STOP=on "
+LOAD_RTT="psql $DATABASE_URL --set ON_ERROR_STOP=on "
 
 
 ${LOAD_KEYS} <<SQL
