@@ -5,5 +5,5 @@ echo "run migrations"
 python manage.py migrate
 
 echo "create super user"
-python manage.py shell execfile ./create_superuser.py
+python manage.py shell < ./create_superuser.py
 
