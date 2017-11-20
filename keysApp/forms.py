@@ -1,12 +1,3 @@
-# from django.forms import ModelForm
-# from .models import Keys
-# from django.utils.translation import ugettext_lazy as _
-
-# class KeySelectForm(ModelForm):
-#     class Meta:
-#         model = Keys
-#         fields = ['key_type', 'number']
-
 from django import forms
 from .models import Keys, KeyTypes, Departments, Affiliations, Customers, LoanExceptions, LoanTerms
 from django.forms import ModelChoiceField, IntegerField, CharField, EmailField, DateTimeField
@@ -89,7 +80,7 @@ class CustomerEntryForm(forms.Form):
         ),
         queryset=Affiliations.objects.all(),
         label='Affiliation',
-        empty_label='Select UW affiliation'
+        empty_label='Select affiliation'
     )
     # Customer personal info
     form_user_id = CharField(
@@ -131,11 +122,11 @@ class CustomerEntryForm(forms.Form):
         widget=forms.EmailInput(
             attrs=
             {'class': 'form-control',
-            'placeholder': 'dubs@uw.edu'}
+            'placeholder': 'email@gmail.com'}
         ),
         label='Email Address',
         help_text='<span class="glyphicon glyphicon-warning-sign"></span>\
-            Do not use departmental or shared email addresses.'
+            Do not use group or shared email addresses.'
     )
     form_department = ModelChoiceField(
         widget=forms.Select(
@@ -144,7 +135,7 @@ class CustomerEntryForm(forms.Form):
         ),
         queryset=Departments.objects.all(),
         label='Department',
-        empty_label='Select UW department or Other'
+        empty_label='Select department'
     )
 
     # Validates customer entry
