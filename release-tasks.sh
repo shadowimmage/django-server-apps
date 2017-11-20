@@ -5,5 +5,5 @@ echo "run migrations"
 python manage.py migrate
 
 echo "create super user"
-echo "echo from django.contrib.auth.models import User; import os; User.objects.create_superuser('shadowimmageAdmin', 'shadowimmage@gmail.com', os.environ['SUPERUSER_PASS'])" | python manage.py shell
+echo "from django.contrib.auth.models import User; import os; User.objects.create_superuser('shadowimmageAdmin', 'shadowimmage@gmail.com', os.environ['SUPERUSER_PASS'])" | python manage.py shell
 
