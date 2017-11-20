@@ -17,7 +17,7 @@ SET search_path = public, pg_catalog;
 DELETE FROM "keysApp_records";
 DELETE FROM "keysApp_loanexceptions";
 DELETE FROM "keysApp_loanterms";
-DELETE FROM "keysApp_customers"
+DELETE FROM "keysApp_customers";
 DELETE FROM "keysApp_affiliations";
 DELETE FROM "keysApp_departments";
 DELETE FROM "keysApp_keys";
