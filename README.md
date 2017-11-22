@@ -1,6 +1,8 @@
-# Sawyer-Apps
+# Django-Server-Apps
 
 Django based applications for better tracking of activities and processes
+
+View the app live at https://chase-sawyer-demos.herokuapp.com/
 
 - KeysApp: For tracking loans of keys, including overdue status and loss.
 - rttApp: Repair Task Tracker - For processing Desktop Computer and other hardware repairs and maintenance.
