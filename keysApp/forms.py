@@ -142,12 +142,12 @@ class CustomerEntryForm(forms.Form):
     def clean(self):
         cleaned_data = super(CustomerEntryForm, self).clean()
         cd_affiliation = cleaned_data.get('form_affiliation')
-        cd_netid = cleaned_data.get('form_user_id')
+        cd_user_id = cleaned_data.get('form_user_id')
         if cd_affiliation:
             if cd_affiliation.customer_user_id_reqd:
-                if not cd_netid or cd_netid == '':
+                if not cd_user_id or cd_user_id == '':
                     raise forms.ValidationError(
-                        _('Invalid entry: \"%(affiliation)s\" affiliation requires NetID to be entered.'),
+                        _('Invalid entry: \"%(affiliation)s\" affiliation requires User ID to be entered.'),
                         code='invalid',
                         params={'affiliation': str(cd_affiliation)}
                     )

@@ -128,7 +128,7 @@ class LoanTerms(models.Model):
 class Affiliations(models.Model):
     affiliation = models.CharField(max_length=64, unique=True)
     customer_user_id_reqd = models.BooleanField(default=True,
-        help_text="set if a customer with this kind of affiliation needs to provide a netid.")
+        help_text="set if a customer with this kind of affiliation needs to provide a user id.")
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
