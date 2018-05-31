@@ -75,7 +75,7 @@ Inherent risk in users not supplying the correct information, as it is not valid
   - Integrity
     - Keys that are checked out can only be returned or renewed
     - Keys that are returned can only be checked out
-    - Affiliation controls whether customer NetID is required to be entered
+    - Affiliation controls whether customer User ID is required to be entered
     - Customers are updated or inserted based on email unique-ness
     - System checks email against associated checkout records
       - Customer cannot check out more than 1 of any type of key without an exception

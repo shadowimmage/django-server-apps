@@ -21,7 +21,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^', include('switchboard.urls')),
+    url(r'^', include('dashboard.urls')),
     url(r'^djangoServer/admin/', admin.site.urls),
     url(r'^djangoServer/', RedirectView.as_view(url='/')),
     url(r'^keysApp/', include('keysApp.urls')),

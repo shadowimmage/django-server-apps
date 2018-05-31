@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from . import views
 
-app_name = 'switchboard'
+app_name = 'dashboard'
 urlpatterns = [
     url(r'^$', views.index, name='home'),
 ]

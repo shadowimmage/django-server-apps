@@ -73,13 +73,17 @@ DATABASES['default']['TEST'] = {'NAME': DATABASES['default']['NAME']}
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow host headers
-ALLOWED_HOSTS = ['.herokuapp.com']
+if 'LOCAL' in os.environ:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    ALLOWED_HOSTS = ['.herokuapp.com']
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'switchboard.apps.SwitchboardConfig',
+    'dashboard.apps.DashboardConfig',
     'keysApp.apps.KeysappConfig',
     'rttApp.apps.RttappConfig',
     'accounts.apps.AccountsConfig',
