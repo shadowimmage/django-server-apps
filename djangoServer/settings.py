@@ -14,7 +14,7 @@ import os
 import dj_database_url
 from django.contrib import admin
 
-admin.site.site_url = '/djangoServer'
+# admin.site.site_url = '/djangoServer'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -52,6 +52,9 @@ if 'LOCAL' in os.environ:
             'PASSWORD': os.environ['DATABASE_PASS'],
             'HOST': '',
             'PORT': '',
+            'OPTIONS': {
+                'client_encoding': 'UTF8',
+            },
         }
     }
 else:
@@ -100,6 +103,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -109,7 +113,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'accounts.middleware.CustomSocialAuthExceptionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 LOGIN_REDIRECT_URL = 'accounts:login'
@@ -229,7 +232,7 @@ STATICFILES_DIRS = (
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 

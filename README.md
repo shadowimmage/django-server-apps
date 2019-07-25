@@ -6,6 +6,7 @@ View the app live at https://chase-sawyer-demos.herokuapp.com/
 
 - KeysApp: For tracking loans of keys, including overdue status and loss.
 - rttApp: Repair Task Tracker - For processing Desktop Computer and other hardware repairs and maintenance.
+- accounts: Handles user accounts, SSO login, etc.
 
 ## Tech Stack - Major Components
 
@@ -14,6 +15,18 @@ View the app live at https://chase-sawyer-demos.herokuapp.com/
 - PostgreSQL
 - GraphQL \(Graphene + Apollo\)
 - Vue.js
+- Heroku CLI (loads .env, handles deployment)
+
+### Setting Up
+
+- Install Postgres server
+  - Create development superuser account
+- Set up `.env` file (see sample)
+- Set up development Python environment (venv or virtualenv)
+- Install requirements (`pip install -r requirements.txt`)
+- Install / Update Heroku CLI
+  - (optional, Windows) when developing on Windows, need to setup a `Procfile.windows` file with the contents: `web: python manage.py runserver 0.0.0.0:5000`
+  - running local server with heroku cli: `heroku local -f .\Procfile.windows`
 
 ## Development Info - Django Core
 
