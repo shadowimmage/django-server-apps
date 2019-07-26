@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from django.contrib import admin
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from graphene_django.views import GraphQLView
@@ -21,12 +21,12 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^', include('dashboard.urls')),
-    url(r'^djangoServer/admin/', admin.site.urls),
-    url(r'^djangoServer/', RedirectView.as_view(url='/')),
-    url(r'^keysApp/', include('keysApp.urls')),
-    url(r'^rttApp/', include('rttApp.urls')),
-    url(r'^graphql/', login_required(ensure_csrf_cookie(GraphQLView.as_view(graphiql=True)))),
-    url(r'^accounts/', include('accounts.urls')),
-    url('', include('social_django.urls', namespace='social')),
+    re_path(r'^', include('dashboard.urls')),
+    re_path(r'^djangoServer/admin/', admin.site.urls),
+    re_path(r'^djangoServer/', RedirectView.as_view(url='/')),
+    re_path(r'^keysApp/', include('keysApp.urls')),
+    re_path(r'^rttApp/', include('rttApp.urls')),
+    re_path(r'^graphql/', login_required(ensure_csrf_cookie(GraphQLView.as_view(graphiql=True)))),
+    re_path(r'^accounts/', include('accounts.urls')),
+    re_path('', include('social_django.urls', namespace='social')),
 ]
