@@ -1,0 +1,33 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: google-api-python-client
+    versions:
+    - 1.12.8
+    - 2.0.1
+    - 2.0.2
+    - 2.1.0
+    - 2.2.0
+  - dependency-name: aniso8601
+    versions:
+    - 8.1.0
+    - 8.1.1
+    - 9.0.0
+  - dependency-name: pytz
+    versions:
+    - "2020.5"
+  - dependency-name: rx
+    versions:
+    - 3.1.1
+  - dependency-name: django
+    versions:
+    - 2.2.13
+  - dependency-name: httplib2
+    versions:
+    - 0.17.3
